@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+ package Persona{
+ class persona {
+ -String name
+ -String apellido
+ -DNI dni
+ }
+ }
+ package DNI{
+   class dni{
+     -Char Caracter
+     -int numero
+   }
+ }
+persona "1" --> "1" dni
+dni "1"..>"1" persona
+@enduml
