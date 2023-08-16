@@ -12,13 +12,21 @@ public class Persona {
 
     }
 
+    public Persona(String name, String apellido, int edad, int documento,Perro perro) {
+        this.name = name;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.documento = documento;
+        this.perro = perro;
+    }
+
     public Persona(String name, String apellido, int edad, int documento) {
         this.name = name;
         this.apellido = apellido;
         this.edad = edad;
         this.documento = documento;
-
     }
+
     public Perro getPerro(){
         return perro;
     }
