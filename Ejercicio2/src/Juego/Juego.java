@@ -14,9 +14,9 @@ public class Juego {
     public Juego(){
 
     }
+
     public void mandaInfoRonda(){
         js.ronda(jugadores);
-
     }
 
 }

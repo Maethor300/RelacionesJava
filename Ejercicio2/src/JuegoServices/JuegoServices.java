@@ -12,7 +12,7 @@ public class JuegoServices {
 
     Scanner scanner = new Scanner(System.in);
     JugadorServices jugadorServices = new JugadorServices();
-
+    Jugador jugador;
     RevolverAguaServices ras = new RevolverAguaServices();
 
     public ArrayList llenarJuego(ArrayList<Jugador> jugadores){
@@ -22,10 +22,9 @@ public class JuegoServices {
             cantidad = 6;
         }
         for (int i = 0; i < cantidad; i++) {
-            Jugador jugador = new Jugador();
+jugador= new Jugador();
             System.out.println("Nombre del jugador:");
             jugador.setName(scanner.next());
-            jugador.setMojado(jugadorServices.disparo());
             jugadores.add(jugador);
         }
 
@@ -33,26 +32,35 @@ public class JuegoServices {
     }
 
     public void ronda(ArrayList<Jugador> jugadores){
-
         do {
             llenarJuego(jugadores);
             ras.llenarRevolver();
-           boolean salirDelJuego = jugadorServices.disparo();
+           boolean salirDelJuego = true;
             for (Jugador i: jugadores
                  ) {
                 System.out.println(i);
             }
             for (int i = 0; i < jugadores.size(); i++) {
+
+                salirDelJuego = ras.mojar();
+                jugadores.get(i).setMojado(salirDelJuego);
+
+
+                    ras.siguienteChorro();
+
                 if(!jugadores.get(i).isMojado()){
                     System.out.println("El jugador que se mojo fue:");
                     System.out.println(jugadores.get(i));
                     break;
                 }
-                ras.siguienteChorro();
             }
+
            if(!salirDelJuego){
                break;
+           }else {
+               jugadores.clear();
            }
+
         }while(true);
     }
 }

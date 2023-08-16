@@ -11,7 +11,6 @@ public class JugadorServices {
         if(ras.mojar()){
             return false;
         }else {
-
             return true;
         }
     }

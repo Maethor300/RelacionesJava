@@ -1,0 +1,239 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "Juego.Juego",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_2037914080 { 
+   	label=JugadorServices
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   JugadorServices2037914080[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)JugadorServices</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   jugador: Jugador [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ras: RevolverAguaServices [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ disparo(): boolean</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_403518370 { 
+   	label=Jugador
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Jugador403518370[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Jugador</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   id: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   mojado: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_496178496 { 
+   	label=JuegoServices
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   JuegoServices496178496[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)JuegoServices</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   jugadorServices: JugadorServices [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ras: RevolverAguaServices [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   scanner: Scanner [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ llenarJuego(jugadores: ArrayList&lt;Jugador&gt;): ArrayList</TD></TR>
+<TR><TD ALIGN="LEFT" >+ ronda(jugadores: ArrayList&lt;Jugador&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_668476077 { 
+   	label=RevolverAguaServices
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   RevolverAguaServices668476077[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)RevolverAguaServices</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   random: Random [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   revolverAgua: RevolverAgua [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ llenarRevolver()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ mojar(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ siguienteChorro()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_71926466 { 
+   	label=Juego
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Juego71926466[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Juego</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   js: JuegoServices [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   jugadores: ArrayList&lt;Jugador&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   revolverAgua: RevolverAgua [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ mandaInfoRonda()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_8719829 { 
+   	label=RevolverAgua
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   RevolverAgua8719829[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)RevolverAgua</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   posicionActual: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   posicionAgua: int [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+Juego71926466 -> JuegoServices496178496[label="js
+[0..1]"];
+Juego71926466 -> Jugador403518370[label="jugadores
+[0..*]"];
+Juego71926466 -> RevolverAgua8719829[label="revolverAgua
+[0..1]"];
+JuegoServices496178496 -> JugadorServices2037914080[label="jugadorServices
+[0..1]"];
+JuegoServices496178496 -> RevolverAguaServices668476077[label="ras
+[0..1]"];
+JugadorServices2037914080 -> Jugador403518370[label="jugador
+[0..1]"];
+JugadorServices2037914080 -> RevolverAguaServices668476077[label="ras
+[0..1]"];
+RevolverAguaServices668476077 -> RevolverAgua8719829[label="revolverAgua
+[0..1]"];
+    
+}
+@enduml
