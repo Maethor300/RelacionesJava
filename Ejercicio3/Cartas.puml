@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+ Package Cartas{
+   class Cartas{
+   -numero
+   -Palo palo
+   ~ArrayList<>
+   }
+ }
+ Package CartasServices{
+ class CartasServices{
+ -Name
+ }
+ }
+ Cartas "1" --> "*"CartasServices
+@enduml

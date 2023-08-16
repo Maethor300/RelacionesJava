@@ -44,10 +44,7 @@ jugador= new Jugador();
 
                 salirDelJuego = ras.mojar();
                 jugadores.get(i).setMojado(salirDelJuego);
-
-
-                    ras.siguienteChorro();
-
+                ras.siguienteChorro();
                 if(!jugadores.get(i).isMojado()){
                     System.out.println("El jugador que se mojo fue:");
                     System.out.println(jugadores.get(i));
