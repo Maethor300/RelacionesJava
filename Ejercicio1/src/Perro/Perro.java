@@ -7,14 +7,16 @@ public class Perro {
     private String raza;
     private int edad;
     private double tamaño;
+    private boolean adoptado = true;
     public Perro(){
 
     }
-    public Perro(String name, String raza, int edad, double tamaño) {
+    public Perro(String name, String raza, int edad, double tamaño,boolean adoptado) {
         this.name = name;
         this.raza = raza;
         this.edad = edad;
         this.tamaño = tamaño;
+        this.adoptado = adoptado;
     }
 
     public String getName() {
@@ -49,6 +51,14 @@ public class Perro {
         this.tamaño = tamaño;
     }
 
+    public boolean isAdoptado() {
+        return adoptado;
+    }
+
+    public void setAdoptado(boolean adoptado) {
+        this.adoptado = adoptado;
+    }
+
     @Override
     public String toString() {
         return "Perro{" +
@@ -56,6 +66,7 @@ public class Perro {
                 ", raza='" + raza + '\'' +
                 ", edad=" + edad +
                 ", tamaño=" + tamaño +
+                ", adoptado=" + adoptado +
                 '}';
     }
 }

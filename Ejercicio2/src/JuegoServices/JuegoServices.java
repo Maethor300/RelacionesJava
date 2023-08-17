@@ -51,7 +51,6 @@ jugador= new Jugador();
                     break;
                 }
             }
-
            if(!salirDelJuego){
                break;
            }else {
