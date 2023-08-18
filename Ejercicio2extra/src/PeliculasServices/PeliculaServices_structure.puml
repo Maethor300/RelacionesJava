@@ -94,6 +94,7 @@ subgraph cluster_1529947354 {
 <TR><TD ALIGN="LEFT" >(C)Peliculas</TD></TR>
 <HR/>
 <TR><TD ALIGN="LEFT" >-   director: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   edadMinima: int [1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   espectador: Espectador [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   precio: double [1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   time: LocalTime [0..1]</TD></TR>
@@ -128,6 +129,27 @@ subgraph cluster_1935828538 {
 ];
 } 
 
+subgraph cluster_2100413 { 
+   	label=Cine
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Cine2100413[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Cine</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   Sala: String[][] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   peliculas: Peliculas [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   precio: double [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
 subgraph cluster_504794053 { 
    	label=CineServices
 	labeljust=l
@@ -138,11 +160,13 @@ subgraph cluster_504794053 {
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)CineServices</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >-   Salas: String[][] [0..*]</TD></TR>
 <TR><TD ALIGN="LEFT" >#   cine: Cine [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   dataInfoAllCine: ArrayList&lt;Cine&gt; [0..*]</TD></TR>
 <TR><TD ALIGN="LEFT" >#   ps: PeliculaServices [0..1]</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >+ showAllData(dataInfoAllCine: ArrayList&lt;String&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ configurarSalas(): String[][]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ mostrarSalas()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showAllData(dataInfoAllCine: ArrayList&lt;Cine&gt;)</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -183,13 +207,15 @@ subgraph cluster_769450152 {
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
 <TR><TD ALIGN="LEFT" >(C)PeliculaServices</TD></TR>
 <HR/>
+<TR><TD ALIGN="LEFT" >#   cine: Cine [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   conteo: int [1]</TD></TR>
 <TR><TD ALIGN="LEFT" >#   peliculasData: ArrayList&lt;Peliculas&gt; [0..*]</TD></TR>
 <TR><TD ALIGN="LEFT" >#   scanner: Scanner [0..1]</TD></TR>
 <TR><TD ALIGN="LEFT" >#   time: LocalTime [0..1]</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >+ addMovie(espectador: Espectador): boolean</TD></TR>
-<TR><TD ALIGN="LEFT" >+ llenarDataPeliculas(dataInfoAllCine: ArrayList&lt;String&gt;)</TD></TR>
-<TR><TD ALIGN="LEFT" >+ llenarEspectador()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addMovie(espectador: Espectador, dataInfoAllCine: ArrayList&lt;Cine&gt;): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ llenarDataPeliculas(dataInfoAllCine: ArrayList&lt;Cine&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ llenarEspectador(dataInfoAllCine: ArrayList&lt;Cine&gt;)</TD></TR>
 <TR><TD ALIGN="LEFT" >+ mostrarInfo()</TD></TR>
 <TR><TD ALIGN="LEFT" >+ noRepetido(id: int): boolean</TD></TR>
 </TABLE>>
@@ -201,10 +227,19 @@ subgraph cluster_769450152 {
 } 
 
 'edges    
+Cine2100413 -> Peliculas1529947354[label="peliculas
+[0..1]"];
+CineServices504794053 -> Cine2100413[label="cine
+[0..1]"];
+CineServices504794053 -> Cine2100413[label="dataInfoAllCine
+[0..*]"];
 CineServices504794053 -> PeliculaServices769450152[label="ps
 [0..1]"];
 EspectadorServices590151864 -> PeliculaServices769450152[label="ps
 [0..1]"];
+PeliculaServices769450152 -> Cine2100413[label="cine
+[0..1]"];
+PeliculaServices769450152 -> CineServices504794053[label="llenarDataPeliculas() -> configurarSalas()"];
 PeliculaServices769450152 -> Peliculas1529947354[label="peliculasData
 [0..*]"];
 Peliculas1529947354 -> Espectador1935828538[label="espectador
