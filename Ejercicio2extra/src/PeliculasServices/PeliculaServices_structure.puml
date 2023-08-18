@@ -70,7 +70,7 @@ config=StructureConfiguration;
     "showPackageLevels": 2,
     "showDetailedClassStructure": true
   },
-  "rootClass": "Perro.Perro",
+  "rootClass": "PeliculasServices.PeliculaServices",
   "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
 }
 diagram meta data end '/
@@ -83,21 +83,21 @@ digraph g {
     
 
 'nodes 
-subgraph cluster_420638710 { 
-   	label=PersonaServices
+subgraph cluster_1529947354 { 
+   	label=Peliculas
 	labeljust=l
 	fillcolor="#ececec"
 	style=filled
    
-   PersonaServices420638710[
+   Peliculas1529947354[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)PersonaServices</TD></TR>
+<TR><TD ALIGN="LEFT" >(C)Peliculas</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >#   personas: ArrayList&lt;Persona&gt; [0..*]</TD></TR>
-<HR/>
-<TR><TD ALIGN="LEFT" >+ Adoptar(perros: ArrayList&lt;Perro&gt;)</TD></TR>
-<TR><TD ALIGN="LEFT" >+ llenarDataPersona()</TD></TR>
-<TR><TD ALIGN="LEFT" >+ mostrarDataPersona()</TD></TR>
+<TR><TD ALIGN="LEFT" >-   director: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   espectador: Espectador [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   precio: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   time: LocalTime [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   titulo: String [0..1]</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -106,21 +106,20 @@ subgraph cluster_420638710 {
 ];
 } 
 
-subgraph cluster_77003770 { 
-   	label=Perro
+subgraph cluster_1935828538 { 
+   	label=Espectador
 	labeljust=l
 	fillcolor="#ececec"
 	style=filled
    
-   Perro77003770[
+   Espectador1935828538[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)Perro</TD></TR>
+<TR><TD ALIGN="LEFT" >(C)Espectador</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >-   adoptado: boolean [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   dinero: double [1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   edad: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   id: int [1]</TD></TR>
 <TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   raza: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   tamaño: double [1]</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -129,21 +128,70 @@ subgraph cluster_77003770 {
 ];
 } 
 
-subgraph cluster_986212236 { 
-   	label=Persona
+subgraph cluster_504794053 { 
+   	label=CineServices
 	labeljust=l
 	fillcolor="#ececec"
 	style=filled
    
-   Persona986212236[
+   CineServices504794053[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)Persona</TD></TR>
+<TR><TD ALIGN="LEFT" >(C)CineServices</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >-   apellido: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   documento: int [1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   edad: int [1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   perro: Perro [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   Salas: String[][] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   cine: Cine [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ps: PeliculaServices [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ showAllData(dataInfoAllCine: ArrayList&lt;String&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_590151864 { 
+   	label=EspectadorServices
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   EspectadorServices590151864[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)EspectadorServices</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   peliculas: Peliculas [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   ps: PeliculaServices [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ mostarInfoPersona(espectadores: ArrayList&lt;Espectador&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_769450152 { 
+   	label=PeliculasServices
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   PeliculaServices769450152[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PeliculaServices</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   peliculasData: ArrayList&lt;Peliculas&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   scanner: Scanner [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   time: LocalTime [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addMovie(espectador: Espectador): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ llenarDataPeliculas(dataInfoAllCine: ArrayList&lt;String&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ llenarEspectador()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ mostrarInfo()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ noRepetido(id: int): boolean</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -153,10 +201,14 @@ subgraph cluster_986212236 {
 } 
 
 'edges    
-Persona986212236 -> Perro77003770[label="perro
+CineServices504794053 -> PeliculaServices769450152[label="ps
 [0..1]"];
-PersonaServices420638710 -> Persona986212236[label="personas
+EspectadorServices590151864 -> PeliculaServices769450152[label="ps
+[0..1]"];
+PeliculaServices769450152 -> Peliculas1529947354[label="peliculasData
 [0..*]"];
+Peliculas1529947354 -> Espectador1935828538[label="espectador
+[0..1]"];
     
 }
 @enduml

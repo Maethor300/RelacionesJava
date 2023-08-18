@@ -35,7 +35,7 @@ public class PersonaServices {
         ) {
             System.out.println(i);
         }
-        
+
 
         System.out.println("Escribe el nombre de la persona");
         String name = scanner.next();

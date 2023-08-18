@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+Package Cine{
+  class Cine{
+  -Pelicula pelicula
+  -sala
+  -Precio
+  ~ArrayList<String> DataInfoAllCine
+  }
+}
+Package CineServices{
+  class CineServices{
+       -String[][]salas
+
+  }
+}
+Package Peliculas{
+  class Peliculas{
+  -titulo
+  -duracion
+  -Espectador espectador
+  -precio
+  -director
+  }
+}
+Package PeliculasServices{
+  class PeliculasServices{
+~ArrayList<Peliculas>
+  }
+}
+Package Espectador{
+  class Espectador{
+  -nombre
+  -edad
+  -dinero
+  }
+}
+Package EspectadorServices{
+  class EspectadorServices{
+     ~ArrayList<Espectador>
+  }
+}
+Cine "1" ..> "*" Peliculas
+Peliculas "*" o-- "1" Cine
+PeliculasServices --> Peliculas
+PeliculasServices --> Cine
+Peliculas --> PeliculasServices
+CineServices --> Cine
+CineServices -->PeliculasServices
+Espectador "*" ..> Peliculas
+EspectadorServices -->Cine
+@enduml

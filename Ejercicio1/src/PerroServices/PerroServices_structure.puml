@@ -70,7 +70,7 @@ config=StructureConfiguration;
     "showPackageLevels": 2,
     "showDetailedClassStructure": true
   },
-  "rootClass": "Perro.Perro",
+  "rootClass": "PerroServices.PerroServices",
   "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
 }
 diagram meta data end '/
@@ -83,67 +83,18 @@ digraph g {
     
 
 'nodes 
-subgraph cluster_420638710 { 
-   	label=PersonaServices
+subgraph cluster_1213191800 { 
+   	label=PerroServices
 	labeljust=l
 	fillcolor="#ececec"
 	style=filled
    
-   PersonaServices420638710[
+   PerroServices1213191800[
 	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)PersonaServices</TD></TR>
+<TR><TD ALIGN="LEFT" >(C)PerroServices</TD></TR>
 <HR/>
-<TR><TD ALIGN="LEFT" >#   personas: ArrayList&lt;Persona&gt; [0..*]</TD></TR>
-<HR/>
-<TR><TD ALIGN="LEFT" >+ Adoptar(perros: ArrayList&lt;Perro&gt;)</TD></TR>
-<TR><TD ALIGN="LEFT" >+ llenarDataPersona()</TD></TR>
-<TR><TD ALIGN="LEFT" >+ mostrarDataPersona()</TD></TR>
-</TABLE>>
-	style=filled
-	margin=0
-	shape=plaintext
-	fillcolor="#FFFFFF"
-];
-} 
-
-subgraph cluster_77003770 { 
-   	label=Perro
-	labeljust=l
-	fillcolor="#ececec"
-	style=filled
-   
-   Perro77003770[
-	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)Perro</TD></TR>
-<HR/>
-<TR><TD ALIGN="LEFT" >-   adoptado: boolean [1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   edad: int [1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   raza: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   tamaño: double [1]</TD></TR>
-</TABLE>>
-	style=filled
-	margin=0
-	shape=plaintext
-	fillcolor="#FFFFFF"
-];
-} 
-
-subgraph cluster_986212236 { 
-   	label=Persona
-	labeljust=l
-	fillcolor="#ececec"
-	style=filled
-   
-   Persona986212236[
-	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
-<TR><TD ALIGN="LEFT" >(C)Persona</TD></TR>
-<HR/>
-<TR><TD ALIGN="LEFT" >-   apellido: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   documento: int [1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   edad: int [1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
-<TR><TD ALIGN="LEFT" >-   perro: Perro [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+ MostrarData()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ llenarData()</TD></TR>
 </TABLE>>
 	style=filled
 	margin=0
@@ -153,10 +104,7 @@ subgraph cluster_986212236 {
 } 
 
 'edges    
-Persona986212236 -> Perro77003770[label="perro
-[0..1]"];
-PersonaServices420638710 -> Persona986212236[label="personas
-[0..*]"];
+
     
 }
 @enduml
