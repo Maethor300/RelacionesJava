@@ -60,7 +60,7 @@ public class Simulador {
 
     public void crearData(HashSet<String> alumnosVotos) {
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 100; i++) {
             Alumno alumno = new Alumno();
             StringBuilder nameCompleted = generateAleatorio();
             StringBuilder dni = generateDni();
@@ -76,11 +76,11 @@ public class Simulador {
         Random rand = new Random();
         Voto voto = new Voto();
         int[] conteoRandom = new int[3];
-        int conteo0 = conteoRandom[0] = rand.nextInt(50);
+        int conteo0 = conteoRandom[0] = rand.nextInt(100);
         System.out.println("0: " + conteo0);
-        int conteo1 = conteoRandom[1] = rand.nextInt(50);
+        int conteo1 = conteoRandom[1] = rand.nextInt(100);
         System.out.println("1: " + conteo1);
-        int conteo2 = conteoRandom[2] = rand.nextInt(50);
+        int conteo2 = conteoRandom[2] = rand.nextInt(100);
         System.out.println("2: " + conteo2);
         for (int i = 0; i < AlumnosData.size(); i++) {
             if (i == conteoRandom[0] || i == conteoRandom[1] || i == conteoRandom[2]) {
@@ -94,20 +94,23 @@ public class Simulador {
 
     public int recuentoVotos(int salirDelBucle) {
         int conteo1 = 0;
-        int disminuir = salirDelBucle;
+
+
         if (salirDelBucle == 0) {
             return conteo1;
         }
         for (int i = 0; i < AlumnosData.size(); i++) {
             if (conteo1 < AlumnosData.get(i).getCantidadVotos()) {
                 conteo1 = AlumnosData.get(i).getCantidadVotos();
-                bigVoto.add(AlumnosData.get(i));
+
+                    bigVoto.add(AlumnosData.get(i));
+
                 AlumnosData.remove(AlumnosData.get(i));
-                disminuir--;
-                break;
+                conteo1 = 0;
             }
         }
-       return recuentoVotos(disminuir);
+
+       return  recuentoVotos(salirDelBucle-1);
     }
     public void mostrarData(){
         for (Alumno i: AlumnosData
@@ -117,7 +120,7 @@ public class Simulador {
     }
     public void mostrarDataVotosBig(){
          bigVoto.sort((p1, p2) ->  Integer.compare(p2.getCantidadVotos(),p1.getCantidadVotos()));
-         for (int i = 0; i < bigVoto.size(); i++) {
+         for (int i = 0; i < 10; i++) {
 
             if(i < 5){
                 System.out.println("Facilitadores");
