@@ -17,7 +17,7 @@ public class CineServices {
 
                 for (Cine i : dataInfoAllCine
                      ) {
-                        System.out.println(Arrays.deepToString(i.getSala())+" " + i.getPeliculas());
+                        System.out.println(i.getPeliculas().getTitulo()+" "+Arrays.deepToString(i.getSala())+" " + i.getPeliculas());
                 }
         }
         public String[][] configurarSalas(){

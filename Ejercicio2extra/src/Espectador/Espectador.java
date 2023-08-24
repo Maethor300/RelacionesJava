@@ -1,5 +1,7 @@
 package Espectador;
 
+import Peliculas.Peliculas;
+
 import java.util.ArrayList;
 
 public class Espectador {
@@ -7,6 +9,7 @@ public class Espectador {
     private int edad;
     private double dinero;
     private int id;
+    private Peliculas peliculas;
     public static  ArrayList<Espectador> espectadores =  new ArrayList<>();
     public Espectador(){
 
@@ -50,6 +53,14 @@ public class Espectador {
         this.id = id;
     }
 
+    public Peliculas getPeliculas() {
+        return peliculas;
+    }
+
+    public void setPeliculas(Peliculas peliculas) {
+        this.peliculas = peliculas;
+    }
+
     public ArrayList<Espectador> getEspectadores() {
         return espectadores;
     }
@@ -61,6 +72,7 @@ public class Espectador {
                 ", edad=" + edad +
                 ", dinero=" + dinero +
                 ", id=" + id +
+                ", peliculas=" + peliculas +
                 '}';
     }
 }

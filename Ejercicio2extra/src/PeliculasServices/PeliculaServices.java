@@ -110,6 +110,7 @@ public class PeliculaServices {
                          for (int m = 0; m < dataInfoAllCine.size(); m++) {
                              System.out.println(Arrays.deepToString(dataInfoAllCine.get(m).getSala()));
                          }
+                         espectador.setPeliculas(i.getPeliculas());
                          System.out.println("Digita el asiento que quieres(Numero)");
                          int numero = scanner.nextInt();
                          System.out.println("Digita la Letra");

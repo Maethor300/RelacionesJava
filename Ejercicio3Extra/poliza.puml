@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+package cliente{
+   class Cliente{
+        -Nombre
+        -Apellido
+        -Documento
+        -Email
+        -Domicilio
+        -Telefono
+        -ArrayList<Vehiculo>vehiculo
+   }
+}
+package vehiculo {
+     class Vehiculo{
+         -Marca
+         -Modelo
+         -Año
+         -Numero de motor
+         -Chasis
+         -Color
+         -Tipo
+         -Poliza poliza
+     }
+}
+package poliza{
+   class Poliza{
+       -Numero de Poliza
+       -Fecha de Inicio
+       -Fecha Final
+       -Cantidad de cuotas
+       -Forma de pago
+       -Monto total asegurado
+       -Incluye granizado
+       -Monto maximo granizado
+       -Tipo de cobertura
+   }
+}
+Cliente "1" o-- "*" Vehiculo
+Poliza "1" ..> "*" Vehiculo
+
+@enduml
