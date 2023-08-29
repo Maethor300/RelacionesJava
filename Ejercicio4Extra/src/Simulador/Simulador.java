@@ -102,9 +102,7 @@ public class Simulador {
         for (int i = 0; i < AlumnosData.size(); i++) {
             if (conteo1 < AlumnosData.get(i).getCantidadVotos()) {
                 conteo1 = AlumnosData.get(i).getCantidadVotos();
-
                     bigVoto.add(AlumnosData.get(i));
-
                 AlumnosData.remove(AlumnosData.get(i));
                 conteo1 = 0;
             }
