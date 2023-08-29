@@ -74,7 +74,7 @@ public class ProductoServices {
               for (int i = 0; i < productosEliminar.size(); i++) {
                   if (productosEliminar.get(i).getName().equals(name)){
                       productosEliminar.remove(i);
-                      
+
                   }
               }
               if(salir){
